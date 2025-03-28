@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const cartCount = document.getElementById("cart-count");
     const sendToAdmin = document.getElementById("send-to-admin");
 
+    
+
     // Sample 30 Products
     const products = [
         { name: "Paracetamol", image: "images/paracetamol.jpg" },
@@ -197,4 +199,25 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     setInterval(nextSlide, 3000); // Change slide every 3 seconds
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const searchBar = document.getElementById("search-bar");
+
+    if (searchBar) {
+        searchBar.addEventListener("input", function () {
+            const searchTerm = searchBar.value.toLowerCase();
+            const productDivs = document.querySelectorAll(".product");
+
+            productDivs.forEach((productDiv) => {
+                const productName = productDiv.querySelector("h3").textContent.toLowerCase();
+
+                if (productName.includes(searchTerm)) {
+                    productDiv.style.display = "block"; // Show matching products
+                } else {
+                    productDiv.style.display = "none"; // Hide non-matching products
+                }
+            });
+        });
+    }
 });
